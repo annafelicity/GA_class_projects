@@ -1,0 +1,26 @@
+What are my steps for project 6:
+1) import all my libraries I need
+2) import data
+3) figure out what needs to be cleaned in data (and clean the stuff that can easily be cleaned prior to doing a train-test split)
+4) operationalize y--out of top 250 what factors made a movie Amazing as compared to just Good? Split the Ratings column into two categories--above the median or equal to or below the median. Assign to column called "is_amazing" with 1 for Amazing and 0 for Good.
+5) do a train/test split
+6) write any definitions if I'm going to do a transformation more than once or a complicated one
+    Will need a "todense" one to use with Function Transformer
+7) make pipelines and create X from that
+    Columns for first try:
+    Actors: CountVectorizer with groups of 2 (and maybe 3, if there are three name actors, set for top ? values)
+    Director (can try two ways): LabelBinarizer or CountVectorizer with groups of 3 and frequency limit set at 2 or above (if that's possible--otherwise set for top 50?)
+    Genre: CountVectorizer
+    Plot: CountVectorizer (take out stopwords; use top 100 words maybe? maybe more?)
+    Rated: LabelBinarizer
+    Runtime: Good as is with mins removed and turned into a number
+    Title: CountVectorizer (try with and without stopwords)
+    Year: Good as is after being turned into a number
+8) fit train to a tree model (random forest, one of the bagging or boosting models)
+9) score and crossvalidate model
+10) if good, predict y hat with test split
+11) try other models, hyperparameters, etc. (steps 7-9)
+12) then apply to full data set when happy with model
+13) print out what columns weighed heavier in the model
+14) need 2 visualizations to add to executive summary--figure out what would be useful
+    One visualization will be a graph of the feature_importances_ values
